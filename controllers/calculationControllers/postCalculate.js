@@ -1,5 +1,4 @@
 const fs = require('fs')
-const math = require('mathjs')
 const calculationResultModel = require('../../db/model/calculationResultModel')
 
 const postCalculate = async (req, res) => {
@@ -13,7 +12,7 @@ const postCalculate = async (req, res) => {
         const fileData = fs.readFileSync(textFile.filepath, 'utf-8');
 
         // calculate result
-        const mathResult = math.evaluate(fileData).entries[0]
+        const mathResult = eval(fileData.split('\n')[0])
 
         // store file to public path
         fs.copyFileSync(textFile.filepath, appRoot + '/public' + fileNameToSave)

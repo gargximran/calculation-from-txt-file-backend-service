@@ -25,7 +25,7 @@ const calculateValidator = (req, res, next) => {
                 errors.textFile = 'Text file cannot be empty!'
             }else{
                 try{
-                    math.evaluate(x)
+                    eval(x.split('\n')[0])
                 }catch (e) {
                     errors.textFile = 'Math syntax in text file is incorrect!'
                 }
